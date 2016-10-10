@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Button page</title>
+    </head>
+    <style>
+        body
+        {
+            margin: 0;
+        }
+        #background
+        {
+            background-color: paleturquoise;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+        }
+        #adding
+        {
+            background-color: #C07F21;
+            width:250px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+        #addBut
+        {
+            width:100px;
+            height: 100px;
+            position: fixed;
+            border-radius: 100px;
+        }
+        #clearBut
+        {
+            width:100px;
+            height: 100px;
+            top: 10px;
+            right: 10px;
+            position: fixed;
+            border-radius: 100px;
+        }
+        #container
+        {
+            margin: 200px 400px 400px 350px;
+            background-color: rgba(175, 149, 235, 0.7);
+            width: 600px;
+            height:auto;
+            position: absolute;
+        }
+        .icon
+        {
+            width:70%;
+            height:70%;
+        }
+        .input
+        {
+            margin-left: 120px;
+            margin-bottom: 15px;
+        }
+        .images
+        {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            display: inline-block;
+        }
+        .status
+        {
+            bottom: -100px;
+            left: 0;
+            width: 100vw;
+            height: 100px;
+            background-color: rgba(243, 156, 72, 0.8);
+            text-align: center;
+            position: fixed;
+            transition: bottom 1s;
+        }
+    </style>
+    <body>
+     <div id = "background"></div>
+      <div id = "adding">
+       <button id = "addBut">
+           <img class = "icon" src = "http://korsvagar1.varldskulturmuseet.se/images/menu_stack-128.png"/>
+       </button>
+       <div>
+       <input type="text" placeholder="Title" id = "title-in" class = "input"/>
+       </div>
+       <div>
+       <input type="text" placeholder="Description" id = "des-in" class = "input"/>
+       </div>
+       <div>
+       <input type="text" placeholder="Image URL" id = "img-in" class = "input"/>
+        </div>
+      </div>
+      <button id = "clearBut">
+          <img class = "icon" src = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSG5DgUoNnafPFQoIZV5mV0dLjHU1bDAt28RYJDyCleogbygnRsZA"/>
+      </button>
+      <div id = "container"></div>
+      <div id = "status1" class = "status">Items Created</div>
+      <div id = "status2" class = "status">Items Cleared</div>
+        <script>
+            var addBut = document.getElementById("addBut");
+            var clearBut = document.getElementById("clearBut");
+            var input_title = document.getElementById("title-in");
+            var input_des = document.getElementById("des-in");
+            var img_url = document.getElementById("img-in");
+            var display = document.getElementById("container");
+            var status1 = document.getElementById("status1");
+            var status2 = document.getElementById("status2");
+            
+            addBut.onclick = function()
+            {
+                var newEntry = document.createElement("div");
+                display.appendChild(newEntry);
+                newEntry.style.width = "80%";
+                newEntry.style.height = "200px";
+                newEntry.style.backgroundColor = "#FE9";
+                newEntry.style.margin = "15px", "60px", "15px";
+                newEntry.style.marginLeft = "50px";
+                newEntry.style.paddingTop = "20px";
+                newEntry.style.paddingLeft = "15px";
+                newEntry.style.paddingRight = "15px";
+                newEntry.style.paddingBottom = "40px";
+                
+                var newTitle = document.createElement("div");
+                newEntry.appendChild(newTitle);
+                newTitle.style.width = "35%";
+                newTitle.style.height = "40px";
+                newTitle.style.backgroundColor = "#C34F72";
+                newTitle.style.marginLeft = "40%";
+                newTitle.style.paddingBottom = "10px";
+                newTitle.style.display = "inline-block";
+                newTitle.style.textAlign = "center";
+                newTitle.style.position = "absolute";
+                newTitle.innerHTML = "<h3>" + input_title.value + "</h3>";
+                
+                var newDes = document.createElement("div");
+                newEntry.appendChild(newDes);
+                newDes.style.backgroundColor = "#D78F69";
+                newDes.style.width = "35%";
+                newDes.style.height = "auto";
+                newDes.style.marginLeft = "40%";
+                newDes.style.marginTop = "12%";
+                newDes.style.display = "inline-block";
+                newDes.style.position = "absolute";
+                newDes.innerHTML = input_des.value;
+                
+                var newimg = document.createElement("img");
+                newimg.src = img_url.value;
+                newimg.className = "images";
+                newEntry.appendChild(newimg);
+                
+                status1.style.bottom = "0px";
+                status2.style.bottom = "-100px";
+                
+            }
+            
+            clearBut.onclick = function()
+            {
+                display.innerHTML = "";
+                status2.style.bottom = "0px";
+                status1.style.bottom = "-100px";
+            }
+        </script>
+    </body>
+</html>
